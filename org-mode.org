@@ -1,0 +1,53 @@
+
+超链接
+#+STARTUP: shrink
+| 命令    | 描述                                                                                                                                                                                                       |
+| <20>    | <20>                                                                                                                                                                                                       |
+|---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| C-c C-l | 插入一个链接，提示向 buffer 插入一个链接，你可以直接输入一个链接或者通过上下键选择一个历史存储链接，之后会提示你输入这个链接的描述信息，当在一个已存在的链接上使用这个命令的时候将会编辑这个链接和描述信息 |
+
+
+
+
+在 org-mode 中内嵌源代码
+org-mode 的内嵌代码块格式是： src_LANG[headers]{your code}, 例如： src_sh[:exports code]{echo -e "test"} 的效果是这样的：echo -e "test". src_xml[:exports code]{<tag>text</tag>} 的效果是这样的：<tag>text</tag>
+虽然在博客里面看不出效果，如果导出成 HTML 并且支持语法高亮的话，就会看出来内嵌代码语句的语法高亮效果了。
+
+org-mode has 2 table formats, the default org-table and the other is table.el.
+Cell wrapping is available for tables in table.el format.
+
+# Wrap cell content in an org mode table
+1. your table look similar to the example below:
+| Verse No | Verse             |
+|        1 | Line1 Line1 Line1 |
+|        2 | Line2 Line2 Line2 |
+Tip: Add a blank line above and below the table. The blank lines should prevent a bug when converting the table with C-c ~. Thanks to @ComproPrasad for troubleshooting and providing the workaround.
+
+2. Place your cursor, a.k.a the point, inside updated table then type C-c ~ and answer y. The updated table should look similar to example below:
++----------+-------------------+
+| Verse No | Verse             |
++----------+-------------------+
+|        1 | Line1 Line1 Line1 |
++----------+-------------------+
+|        2 | Line2 Line2 Line2 |
++----------+-------------------+
+3. Place your cursor inside updated table then type C-c ' and a new window or frame will appear.
+4. Type M-x t-r-t and each table cell should be highlighted.
+5. Place your cursor inside second column and type C-c C-c < until the column is the desired width.
+Tip: Use the universal argument key binding C-u to quickly repeat this step. For example, If your cell is 500 characters and you want to adjust the width to 10 characters do C-u 490 C-c C-c < which will repeat C-c C-c < command 490 times.
+
+6. Type C-c ' to finish editing table. These steps should leave you with a similar to the example below:
++----------+------+
+| Verse No | Verse|
++----------+------+
+|        1 |Line1 |
+|          |Line1 |
+|          |Line1 |
++----------+------+
+|        2 |Line2 |
+|          |Line2 |
+|          |Line2 |
++----------+------+
+
+# reference
+[[https://www.gnu.org/software/emacs/manual/html_node/emacs/Text-Based-Tables.html][Editing Text-based Tables]]
